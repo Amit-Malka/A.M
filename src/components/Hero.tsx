@@ -14,13 +14,13 @@ const Hero: React.FC = () => {
   const handleDownloadCV = async () => {
     try {
       // Check if file exists first
-      const response = await fetch('/AmitMalka-CV.pdf', { method: 'HEAD' });
+      const response = await fetch(`${process.env.PUBLIC_URL}/AmitMalka-CV.pdf`, { method: 'HEAD' });
       if (!response.ok) {
         throw new Error('CV file not found');
       }
 
       const link = document.createElement('a');
-      link.href = '/AmitMalka-CV.pdf';
+      link.href = `${process.env.PUBLIC_URL}/AmitMalka-CV.pdf`;
       link.download = 'Amit-Malka-CV.pdf';
       link.style.display = 'none';
       document.body.appendChild(link);
@@ -46,10 +46,10 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="relative">
-            <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-primary p-1 animate-glow">
+            <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-primary p-1">
               <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-accent text-xl font-semibold border-4 border-accent/20">
                 <img
-                  src="/images/me.jpg"
+                  src={`${process.env.PUBLIC_URL}/images/me.jpg`}
                   alt="Amit Malka"
                   className="w-full h-full rounded-full object-cover"
                   loading="eager"
@@ -59,10 +59,10 @@ const Hero: React.FC = () => {
                 />
               </div>
             </div>
-            {/* Floating elements around image */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-secondary rounded-full animate-float opacity-80"></div>
-            <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-accent rounded-full animate-float opacity-70" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute top-1/2 -right-8 w-4 h-4 bg-primary rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+            {/* Static decorative elements around image */}
+            <div className="absolute -top-4 -right-4 w-8 h-8 bg-secondary rounded-full opacity-60"></div>
+            <div className="absolute -bottom-6 -left-6 w-6 h-6 bg-accent rounded-full opacity-50"></div>
+            <div className="absolute top-1/2 -right-8 w-4 h-4 bg-primary rounded-full opacity-70"></div>
           </div>
         </motion.div>
 
@@ -151,7 +151,7 @@ const Hero: React.FC = () => {
       </div>
       
       <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-accent cursor-pointer animate-bounce"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-accent cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}

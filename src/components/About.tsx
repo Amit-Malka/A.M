@@ -55,7 +55,7 @@ const About: React.FC = () => {
               <div className="w-64 h-80 rounded-2xl bg-gradient-primary p-1 animate-glow">
                 <div className="w-full h-full rounded-2xl bg-gray-800 flex items-center justify-center text-accent text-lg font-semibold border-4 border-accent/20 overflow-hidden">
                   <img
-                    src="/images/me2.jpg"
+                    src={`${process.env.PUBLIC_URL}/images/me2.jpg`}
                     alt="Amit Malka"
                     className="w-full h-full object-cover"
                     loading="lazy"
