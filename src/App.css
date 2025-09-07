@@ -1,0 +1,37 @@
+/* Additional styles to complement Tailwind CSS */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hardware-accelerated animations */
+.animate-float,
+.animate-particle-float,
+.animate-glow,
+.animate-gradient-shift {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Optimize hover effects */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-out;
+}
+
+.hover\:-translate-y-1:hover {
+  transform: translateY(-0.25rem);
+  transition: transform 0.2s ease-out;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
