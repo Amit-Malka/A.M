@@ -17,22 +17,6 @@ Professional portfolio website showcasing AI development expertise, projects, an
 - **Deployment**: GitHub Pages
 - **CI/CD**: GitHub Actions
 
-## 🏗️ Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm start
-
-# Build for production
-npm run build
-
-# Run tests
-npm test
-```
-
 ## 📁 Project Structure
 
 ```
@@ -49,12 +33,12 @@ docs/              # Built files (GitHub Pages)
 
 ## 🌐 Live Site
 
-Visit: [https://amit-malka.github.io/AmitMalkaWEB/](https://amit-malka.github.io/AmitMalkaWEB/)
+Visit: [https://amit-malka.github.io/A.M/](https://amit-malka.github.io/A.M/)
 
 ## 📞 Contact
 
-- **Email**: amitmalka95@gmail.com
-- **LinkedIn**: [Amit Malka](https://www.linkedin.com/in/amit-malka-4849901ba/)
+- **Email**: amit.malka08@gmail.com
+- **LinkedIn**: [Amit Malka](https://www.linkedin.com/in/--amitmalka--/)
 - **GitHub**: [@Amit-Malka](https://github.com/Amit-Malka)
 
 ---
