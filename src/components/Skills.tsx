@@ -51,6 +51,28 @@ const Skills: React.FC = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
     <section id="skills" className="relative min-h-screen bg-background-dark py-20">
       <DynamicBackground />
@@ -65,7 +87,7 @@ const Skills: React.FC = () => {
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">Skills & Technologies</h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Comprehensive expertise in AI, development tools, and professional skills
+            Comprehensive expertise in AI, development tools, and professional competencies
           </p>
         </motion.div>
 
@@ -79,47 +101,54 @@ const Skills: React.FC = () => {
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
-              className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 hover:bg-white/10 hover:border-accent/30 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 hover:bg-white/10 hover:border-accent/30 hover:shadow-lg hover:shadow-secondary/10 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: categoryIndex * 0.1 }}
+              whileHover={{ y: -5 }}
             >
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center text-white">
+                <motion.div 
+                  className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-secondary/20"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: 'spring', stiffness: 200 }}
+                >
                   {category.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-2xl font-bold text-white">{category.title}</h3>
               </div>
 
               <motion.div
                 className="grid grid-cols-2 sm:grid-cols-3 gap-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: (categoryIndex * 0.1) + 0.2 }}
               >
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skillIndex}
-                    className="group bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.3,
-                      delay: (categoryIndex * 0.1) + (skillIndex * 0.02) + 0.3,
-                      ease: "easeOut"
-                    }}
+                    className="group bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.08, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <div className="flex flex-col items-center text-center space-y-3">
-                      <div
-                        className="text-3xl w-12 h-12 flex items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110"
-                        style={{ backgroundColor: `${skill.color}20`, boxShadow: `0 0 20px ${skill.color}30` }}
+                      <motion.div
+                        className="text-3xl w-12 h-12 flex items-center justify-center rounded-xl transition-all duration-300"
+                        style={{ 
+                          backgroundColor: `${skill.color}20`, 
+                          boxShadow: `0 0 20px ${skill.color}30` 
+                        }}
+                        whileHover={{ 
+                          scale: 1.15,
+                          boxShadow: `0 0 30px ${skill.color}60`
+                        }}
                       >
                         {skill.icon}
-                      </div>
-                      <span className="text-sm font-medium text-white group-hover:text-accent transition-colors duration-300">
+                      </motion.div>
+                      <span className="text-sm font-medium text-white group-hover:text-accent transition-colors duration-300 line-clamp-2">
                         {skill.name}
                       </span>
                     </div>
