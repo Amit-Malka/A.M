@@ -99,13 +99,6 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <span className="text-accent text-sm lg:text-base font-semibold uppercase tracking-widest">Welcome to my portfolio</span>
-          </motion.div>
 
           <motion.h1
             className="text-5xl lg:text-7xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent leading-tight"
@@ -131,7 +124,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Transforming complex data into intelligent systems. Specialized in Large Language Models, RAG systems, and AI agent development with a strong foundation in statistical analysis.
+            Transforming complex data into intelligent systems. Specialized in LLM's, RAG systems, and AI agent development with a strong foundation in statistical analysis.
           </motion.p>
           
           <motion.div 

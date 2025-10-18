@@ -80,17 +80,21 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <p className="text-xl text-accent font-medium leading-relaxed">
-              I'm an AI developer with a strong foundation in programming and statistical analysis. 
-              My journey began in biotechnology and data analysis, where I developed expertise in 
-              computational biology and research methodologies.
-            </p>
-            
-
-            <p className="text-lg text-gray-300 leading-relaxed">
-              With experience ranging from laboratory operations at MyHeritage to genomic data 
-              analysis at MIGAL Research Institute, I bring a unique perspective to AI development 
-              - understanding both the theoretical foundations and practical applications of 
-              intelligent systems.
+              A natural curiosity drives me to dive deep into complex systems.
+              <br />
+              My journey started in biotechnology and data analysis, where I learned to find meaning within the 'noise' of high-dimensional biological data.
+              <br />
+              This passion for data evolved into a deep focus on Artificial Intelligence.
+              <br />
+              Today, as an AI Developer, I build the tools that help us make sense of our world.
+              <br />
+              My expertise is in advanced AI, with a focus on LLMs and RAG systems.
+              <br />
+              I enjoy the technical challenge of designing sophisticated solutions, such as developing multi-modal systems that understand text, tables, and charts, or engineering hybrid retrieval systems that combine vector search (like ChromaDB) with graph databases (like Neo4j) to provide the most accurate answers.
+              <br />
+              Whether it's a financial report or a genomic sequence, my goal is the same: to turn raw, complex information into clear, practical insights.
+              <br />
+              I am a fast learner, highly adaptable, and a strong team collaborator.
             </p>
           </motion.div>
         </div>

@@ -32,7 +32,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
         <h3 className="text-lg font-semibold text-white mb-4">Filter by Category</h3>
         <motion.div
           className="flex flex-wrap gap-3"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
@@ -60,7 +60,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
         <h3 className="text-lg font-semibold text-white mb-4">Filter by Technology</h3>
         <motion.div
           className="flex flex-wrap gap-2"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.15 }}

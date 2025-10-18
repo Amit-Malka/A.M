@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, ChevronDown, Zap, TrendingUp } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Github, ExternalLink, Zap } from 'lucide-react';
 import { Project } from '../utils/projectData';
 import * as Icons from 'lucide-react';
 
@@ -10,8 +10,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   const iconComponent = Icons[project.icon as keyof typeof Icons] || Icons.Zap;
   const IconComponent = iconComponent as React.ComponentType<{ size: number }>;
 
@@ -96,105 +94,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             ))}
           </motion.div>
 
-          {/* Metrics Display (when expanded) */}
-          <AnimatePresence>
-            {isExpanded && project.caseStudy.metrics && (
-              <motion.div
-                className="grid grid-cols-2 gap-3 mb-6 pb-6 border-b border-white/10"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {project.caseStudy.metrics.map((metric, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="bg-gradient-primary/20 border border-secondary/30 rounded-xl p-3 text-center"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.05 }}
-                  >
-                    <div className="text-lg font-bold text-accent">{metric.value}</div>
-                    <div className="text-xs text-gray-300 mt-1">{metric.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Case Study Details (when expanded) */}
-          <AnimatePresence>
-            {isExpanded && (
-              <motion.div
-                className="space-y-4 mb-6 pb-6 border-b border-white/10 text-sm"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div>
-                  <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-                    <TrendingUp size={16} className="text-secondary" />
-                    Problem Statement
-                  </h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    {project.caseStudy.problemStatement}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-                    <TrendingUp size={16} className="text-secondary" />
-                    Solution
-                  </h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    {project.caseStudy.solution}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-                    <TrendingUp size={16} className="text-secondary" />
-                    Technical Architecture
-                  </h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    {project.caseStudy.technicalArchitecture}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-                    <TrendingUp size={16} className="text-secondary" />
-                    Key Achievements
-                  </h4>
-                  <ul className="space-y-2">
-                    {project.caseStudy.keyAchievements.map((achievement, idx) => (
-                      <li key={idx} className="text-gray-300 flex gap-2">
-                        <span className="text-secondary flex-shrink-0">•</span>
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
           {/* Action Buttons */}
           <div className="mt-auto space-y-3">
-            <motion.button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="w-full inline-flex items-center justify-center gap-3 px-6 py-3 bg-white/5 text-accent border border-accent/30 font-semibold rounded-xl hover:bg-accent/10 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {isExpanded ? 'Hide Details' : 'View Case Study'}
-              <ChevronDown
-                size={18}
-                className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
-              />
-            </motion.button>
-
             {project.liveDemo && (
               <motion.a
                 href={project.liveDemo}
