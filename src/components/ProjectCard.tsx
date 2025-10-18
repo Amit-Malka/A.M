@@ -23,7 +23,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
     >
       <motion.div
         className="relative h-full bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl overflow-hidden hover:bg-white/10 hover:border-accent/30 transition-all duration-300 group flex flex-col"
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(100, 200, 255, 0.2)' }}
       >
         {/* Project Header */}
         <div className="relative h-48 bg-gradient-primary flex items-center justify-center overflow-hidden">
@@ -56,7 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
             {project.title}
           </h3>
-          <p className="text-gray-300 leading-relaxed mb-6 text-sm">
+          <p className="text-gray-200 leading-relaxed mb-6 text-sm">
             {project.description}
           </p>
 
@@ -69,7 +69,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             transition={{ duration: 0.3, delay: index * 0.1 + 0.2 }}
           >
             {project.highlights.map((highlight, highlightIndex) => (
-              <div key={highlightIndex} className="flex items-center gap-2 text-sm text-gray-300">
+              <div key={highlightIndex} className="flex items-center gap-2 text-sm text-gray-200">
                 <Zap size={14} className="text-secondary flex-shrink-0" />
                 {highlight}
               </div>

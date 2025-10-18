@@ -76,7 +76,7 @@ const Experience: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">Experience & Education</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             My journey through AI development, research, and professional experience
           </p>
         </motion.div>
@@ -94,14 +94,14 @@ const Experience: React.FC = () => {
           {experiences.map((experience, index) => (
             <motion.div
               key={index}
-              className={`relative mb-12 md:mb-16 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}
+              className={`relative mb-12 md:mb-16 ${index % 2 === 0 ? 'md:text-left md:pr-8' : 'md:text-left md:pl-8'}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
             >
               {/* Timeline marker */}
-              <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-primary rounded-full items-center justify-center text-white shadow-lg border-4 border-background-dark">
+              <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-primary rounded-full items-center justify-center text-white shadow-md border-4 border-background-dark">
                 {getIcon(experience.type)}
               </div>
 
@@ -125,7 +125,7 @@ const Experience: React.FC = () => {
                 <h3 className="text-2xl font-bold text-white mb-2">{experience.title}</h3>
                 <div className="text-lg font-medium text-accent mb-4">{experience.company}</div>
 
-                <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-300">
+                <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-200">
                   <div className="flex items-center gap-2">
                     <Calendar size={16} />
                     {experience.period}
@@ -136,7 +136,7 @@ const Experience: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-300 leading-relaxed mb-6">{experience.description}</p>
+                <p className="text-gray-200 leading-relaxed mb-6">{experience.description}</p>
 
                 <motion.div
                   className="flex flex-wrap gap-2"
@@ -148,7 +148,7 @@ const Experience: React.FC = () => {
                   {experience.highlights.map((highlight, highlightIndex) => (
                     <span
                       key={highlightIndex}
-                      className="px-3 py-1 bg-secondary/20 text-accent border border-secondary/30 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-secondary/20 text-white border border-secondary/30 rounded-full text-sm font-medium"
                     >
                       {highlight}
                     </span>

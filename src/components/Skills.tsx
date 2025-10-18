@@ -86,7 +86,7 @@ const Skills: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">Skills & Technologies</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             Comprehensive expertise in AI, development tools, and professional competencies
           </p>
         </motion.div>

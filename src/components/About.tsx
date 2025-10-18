@@ -120,7 +120,7 @@ const About: React.FC = () => {
                 {highlight.icon}
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">{highlight.title}</h3>
-              <p className="text-gray-300 leading-relaxed">{highlight.description}</p>
+              <p className="text-gray-200 leading-relaxed">{highlight.description}</p>
             </motion.div>
           ))}
         </motion.div>

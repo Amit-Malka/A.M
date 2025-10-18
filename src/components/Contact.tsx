@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">Get In Touch</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
             Let's discuss how we can work together to bring your AI and data projects to life
           </p>
         </motion.div>
@@ -123,7 +123,7 @@ const Contact: React.FC = () => {
           >
             <div className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8">
               <h3 className="text-3xl font-bold text-white mb-4">Let's Connect</h3>
-              <p className="text-lg text-gray-300 leading-relaxed mb-8">
+              <p className="text-lg text-gray-200 leading-relaxed mb-8">
                 I'm always excited to discuss new opportunities, collaborate on interesting projects, 
                 or simply chat about the latest developments in AI and data science.
               </p>
@@ -142,7 +142,7 @@ const Contact: React.FC = () => {
                       {item.icon}
                     </div>
                     <div>
-                      <div className="text-sm text-gray-400 font-medium">{item.label}</div>
+                      <div className="text-sm text-gray-300 font-medium">{item.label}</div>
                       {item.href ? (
                         <a href={item.href} className="text-white font-medium hover:text-accent transition-colors duration-300">
                           {item.value}
@@ -164,7 +164,7 @@ const Contact: React.FC = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-16 h-16 bg-white/10 backdrop-blur-sm border border-accent/20 rounded-2xl flex items-center justify-center text-accent hover:bg-secondary hover:text-white hover:scale-110 transition-all duration-300"
+                      className="w-16 h-16 bg-white/10 backdrop-blur-sm border border-accent/20 rounded-2xl flex items-center justify-center text-gray-300 hover:text-white hover:bg-secondary hover:border-secondary hover:scale-110 transition-all duration-300"
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
@@ -212,7 +212,7 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     placeholder="Your full name"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white/15 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:border-secondary focus:bg-white/15 transition-all duration-300"
                   />
                 </div>
 
@@ -228,7 +228,7 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     placeholder="your.email@example.com"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white/15 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:border-secondary focus:bg-white/15 transition-all duration-300"
                   />
                 </div>
 
@@ -244,7 +244,7 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     placeholder="What's this about?"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white/15 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:border-secondary focus:bg-white/15 transition-all duration-300"
                   />
                 </div>
 
@@ -260,7 +260,7 @@ const Contact: React.FC = () => {
                     required
                     rows={6}
                     placeholder="Tell me about your project or just say hello..."
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-secondary focus:bg-white/15 transition-all duration-300 resize-vertical"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:border-secondary focus:bg-white/15 transition-all duration-300 resize-vertical"
                   />
                 </div>
 
