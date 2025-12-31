@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ArrowDown, Download, Github, Linkedin } from 'lucide-react';
 import DynamicBackground from './DynamicBackground';
 
@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
     }
   };
 
-  const socialVariants = {
+  const socialVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
