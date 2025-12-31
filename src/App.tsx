@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -52,6 +53,7 @@ function App() {
             <Contact />
           </Suspense>
         </main>
+        <Analytics />
       </div>
     </Router>
   );
