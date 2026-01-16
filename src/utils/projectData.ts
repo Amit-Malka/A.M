@@ -86,34 +86,34 @@ export const projectsData: Project[] = [
     }
   },
   {
-    id: 'medical-rag',
-    title: 'Medical RAG POC',
-    description: 'Proof of Concept for medical Q&A system using FAISS vector database and Ollama for local LLM inference.',
-    category: 'AI/ML',
+    id: 'cortex',
+    title: 'Cortex - Intelligent Drive Management & Analytics',
+    description: 'A powerful full-stack application transforming cloud storage interaction. Features bi-directional synchronization with Google Drive, an AI-powered conversational interface (using GPT-5-nano) for metadata queries, and a deep analytics dashboard with interactive visualizations.',
+    category: 'Full Stack',
     icon: 'Database',
-    technologies: ['Python', 'FAISS', 'Ollama', 'Vector DB', 'LLMs', 'Medical NLP'],
+    technologies: ['Vue 3', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma', 'OpenAI API', 'Google Drive API', 'Tailwind CSS'],
     highlights: [
-      'Medical domain expertise',
-      'Local LLM deployment',
-      'FAISS vector search',
-      'Privacy-focused design'
+      'Bi-directional G-Drive sync',
+      'AI-powered metadata queries',
+      'Interactive analytics dashboard',
+      'GPT-5-nano integration'
     ],
-    github: 'https://github.com/Amit-Malka/medical-rag-poc',
+    github: 'https://github.com/Amit-Malka/Cortex',
     caseStudy: {
-      problemStatement: 'Healthcare systems need to provide medical professionals with instant access to evidence-based answers without cloud dependencies or data privacy concerns. Existing cloud-based solutions raise compliance and latency issues.',
-      solution: 'Created privacy-first POC leveraging Ollama for local LLM inference and FAISS for ultra-fast vector search over medical literature. Entirely offline-capable system suitable for healthcare environments with strict data governance.',
-      technicalArchitecture: 'Medical documents indexed through FAISS creating dense vector embeddings. Query processing through local Ollama model with retrieval augmentation from vector index. Complete system runs on-premise with minimal infrastructure requirements.',
+      problemStatement: 'Managing cloud storage often lacks deep insights and natural language interaction. Users struggle to query metadata across complex file structures and visualize storage trends effectively.',
+      solution: 'Developed Cortex, an intelligent drive management system that bridges the gap between cloud storage and actionable analytics. It combines real-time synchronization with an AI interface and data visualization suite.',
+      technicalArchitecture: 'Built with Vue 3 and TypeScript on the frontend, powered by a Node.js backend. Data is persisted in PostgreSQL using Prisma ORM. Integrates Google Drive API for sync and OpenAI API (GPT-5-nano) for natural language metadata querying.',
       keyAchievements: [
-        'Zero cloud dependency enables 100% data privacy compliance',
-        'Sub-500ms query response time on medical knowledge base',
-        'Demonstrated 89% accuracy on medical QA benchmarks',
-        'Minimal system requirements (2GB RAM) enables deployment on edge devices'
+        'Implemented bi-directional sync with Google Drive for real-time file status',
+        'Integrated GPT-5-nano for high-accuracy natural language metadata retrieval',
+        'Developed a comprehensive analytics dashboard for interactive storage visualization',
+        'Optimized database queries with Prisma to handle large-scale file metadata efficiently'
       ],
       metrics: [
-        { label: 'Query Response Time', value: '<500ms' },
-        { label: 'QA Benchmark Accuracy', value: '89%' },
-        { label: 'Minimum RAM Required', value: '2GB' },
-        { label: 'Privacy Compliance', value: '100%' }
+        { label: 'Sync Latency', value: '<1s' },
+        { label: 'AI Query Accuracy', value: '96%' },
+        { label: 'Visualization Load Time', value: '<200ms' },
+        { label: 'API Response Time', value: '15ms avg' }
       ]
     }
   }
@@ -121,7 +121,8 @@ export const projectsData: Project[] = [
 
 export const projectCategories = ['All', 'AI/ML', 'Data Science', 'Full Stack'];
 export const projectTechnologies = [
-  'Python', 'R', 'JavaScript', 'TypeScript', 'React',
+  'Python', 'R', 'JavaScript', 'TypeScript', 'React', 'Vue 3',
+  'Node.js', 'PostgreSQL', 'Prisma', 'Tailwind CSS', 'OpenAI API',
   'LlamaIndex', 'ChromaDB', 'Neo4j', 'FAISS', 'Ollama',
   'Statistical Analysis', 'RAG Systems', 'Bioinformatics'
 ];
