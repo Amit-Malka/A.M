@@ -10,6 +10,7 @@ import { generatePersonSchema, generateWebsiteSchema } from './utils/schemaMarku
 const Skills = React.lazy(() => import('./components/Skills'));
 const Experience = React.lazy(() => import('./components/Experience'));
 const Projects = React.lazy(() => import('./components/Projects'));
+const WorkWithMe = React.lazy(() => import('./components/WorkWithMe'));
 const Contact = React.lazy(() => import('./components/Contact'));
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
           </Suspense>
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
             <Projects />
+          </Suspense>
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
+            <WorkWithMe />
           </Suspense>
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
             <Contact />

@@ -1,0 +1,66 @@
+/* Work With Me Section Styles */
+
+#work-with-me {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Service Card Animations */
+.service-card {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(100, 200, 255, 0.3), rgba(150, 100, 255, 0.3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+/* CTA Section Glow Effect */
+.cta-glow {
+    position: relative;
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(100, 200, 255, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(100, 200, 255, 0.5);
+    }
+}
+
+/* Trust Indicators Animation */
+.trust-indicator {
+    transition: transform 0.3s ease;
+}
+
+.trust-indicator:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #work-with-me .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

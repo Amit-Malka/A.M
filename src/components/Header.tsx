@@ -29,6 +29,7 @@ const Header: React.FC = () => {
     { label: 'Skills', id: 'skills' },
     { label: 'Experience', id: 'experience' },
     { label: 'Projects', id: 'projects' },
+    { label: 'Work With Me', id: 'work-with-me' },
     { label: 'Contact', id: 'contact' },
   ];
 
@@ -53,13 +54,12 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-primary/95 backdrop-blur-xl shadow-lg shadow-secondary/10 border-b border-accent/20' 
+    <header className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${scrolled
+        ? 'bg-primary/95 backdrop-blur-xl shadow-lg shadow-secondary/10 border-b border-accent/20'
         : 'bg-transparent backdrop-blur-sm border-b border-accent/10'
-    }`}>
+      }`}>
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -84,7 +84,7 @@ const Header: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 {item.label}
-                <motion.span 
+                <motion.span
                   className="absolute bottom-0 left-0 h-0.5 bg-gradient-primary"
                   initial={{ width: 0 }}
                   whileHover={{ width: '100%' }}
@@ -106,15 +106,14 @@ const Header: React.FC = () => {
         </motion.button>
 
         {/* Mobile Menu */}
-        <motion.nav 
-          className={`absolute top-full left-0 right-0 bg-primary/95 backdrop-blur-xl border-b border-accent/20 py-8 md:hidden ${
-            isMenuOpen ? 'block' : 'hidden'
-          }`}
+        <motion.nav
+          className={`absolute top-full left-0 right-0 bg-primary/95 backdrop-blur-xl border-b border-accent/20 py-8 md:hidden ${isMenuOpen ? 'block' : 'hidden'
+            }`}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : -20 }}
           transition={{ duration: 0.3 }}
         >
-          <motion.div 
+          <motion.div
             className="flex flex-col gap-4 px-6"
             variants={containerVariants}
             initial="hidden"

@@ -97,7 +97,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="relative min-h-screen bg-gradient-to-br from-primary to-background-dark py-20">
       <DynamicBackground />
-      
+
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div
           className="text-center mb-16"
@@ -108,7 +108,7 @@ const Contact: React.FC = () => {
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">Get In Touch</h2>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            Let's discuss how we can work together to bring your AI and data projects to life
+            Ready to start your project? Drop me a message and let's create something amazing together
           </p>
         </motion.div>
 
@@ -124,7 +124,7 @@ const Contact: React.FC = () => {
             <div className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8">
               <h3 className="text-3xl font-bold text-white mb-4">Let's Connect</h3>
               <p className="text-lg text-gray-200 leading-relaxed mb-8">
-                I'm always excited to discuss new opportunities, collaborate on interesting projects, 
+                I'm always excited to discuss new opportunities, collaborate on interesting projects,
                 or simply chat about the latest developments in AI and data science.
               </p>
 
