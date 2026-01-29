@@ -30,7 +30,7 @@ const About: React.FC = () => {
   return (
     <section id="about" className="relative min-h-screen bg-gradient-to-br from-primary to-background-light py-20">
       <DynamicBackground />
-      
+
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div
           className="text-center mb-16"
@@ -72,7 +72,7 @@ const About: React.FC = () => {
           </motion.div>
 
           {/* About Text */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-2 space-y-6"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -92,7 +92,11 @@ const About: React.FC = () => {
               <br />
               I enjoy the technical challenge of designing sophisticated solutions, such as developing multi-modal systems that understand text, tables, and charts, or engineering hybrid retrieval systems that combine vector search (like ChromaDB) with graph databases (like Neo4j) to provide the most accurate answers.
               <br />
-              Whether it's a financial report or a genomic sequence, my goal is the same: to turn raw, complex information into clear, practical insights.
+              <br />
+              <span className="text-secondary font-semibold">🏆 Recently, I secured 2nd place at the Soroka Hospital hackathon with ResiPlanAI</span>, an AI-powered residency planning platform that revolutionizes medical training schedules. This achievement demonstrates my ability to apply AI solutions to real-world healthcare challenges, creating meaningful impact where technology meets human needs.
+              <br />
+              <br />
+              Whether it's a financial report, a genomic sequence, or a complex scheduling problem, my goal is the same: to turn raw, complex information into clear, practical insights.
               <br />
               I am a fast learner, highly adaptable, and a strong team collaborator.
             </p>
@@ -100,7 +104,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Highlights Grid */}
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

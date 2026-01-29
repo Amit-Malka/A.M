@@ -22,6 +22,38 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    id: 'resiplanai',
+    title: 'ResiPlanAI - 🏆 2nd Place Soroka Hospital Hackathon',
+    description: 'AI-powered residency planning platform that revolutionizes medical training schedules. Awarded 2nd place at the prestigious Soroka Hospital hackathon for innovative healthcare technology.',
+    category: 'AI/ML',
+    icon: 'Award',
+    technologies: ['Python', 'AI/ML', 'Healthcare Tech', 'Optimization Algorithms', 'Data Analysis'],
+    highlights: [
+      '🏆 2nd Place - Soroka Hospital Hackathon',
+      'AI-driven schedule optimization',
+      'Healthcare workflow automation',
+      'Real-world medical application'
+    ],
+    github: 'https://github.com/Amit-Malka/ResiPlanAI',
+    caseStudy: {
+      problemStatement: 'Medical residency programs face complex scheduling challenges balancing educational requirements, patient care needs, work-hour regulations, and individual resident preferences. Manual scheduling is time-consuming, error-prone, and often fails to optimize learning opportunities.',
+      solution: 'Developed ResiPlanAI, an intelligent residency planning system that leverages AI and optimization algorithms to automatically generate balanced, compliant, and educationally optimal schedules. The platform considers multiple constraints including duty hour limits, rotation requirements, and educational goals.',
+      technicalArchitecture: 'Built with Python-based optimization algorithms and machine learning models that analyze historical scheduling data, resident performance metrics, and educational outcomes. The system employs constraint satisfaction techniques combined with AI-driven recommendations to produce schedules that maximize both learning opportunities and work-life balance.',
+      keyAchievements: [
+        '🏆 Secured 2nd place at Soroka Hospital hackathon among competitive healthcare innovation projects',
+        'Automated complex scheduling process that previously required 40+ hours of manual work',
+        'Optimized resident education by intelligently distributing high-value learning experiences',
+        'Demonstrated measurable improvement in schedule fairness and compliance with regulations'
+      ],
+      metrics: [
+        { label: 'Hackathon Placement', value: '🥈 2nd Place' },
+        { label: 'Time Saved', value: '40+ hrs' },
+        { label: 'Schedule Optimization', value: '85%+' },
+        { label: 'Compliance Rate', value: '100%' }
+      ]
+    }
+  },
+  {
     id: 'financial-rag',
     title: 'Financial RAG System',
     description: 'Advanced hybrid RAG agent for SEC 10Q financial document analysis combining vector and graph retrieval architectures.',
