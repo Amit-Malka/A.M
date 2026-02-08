@@ -51,13 +51,13 @@ const Contact: React.FC = () => {
   const handleDownloadCV = async () => {
     try {
       // Check if file exists first
-      const response = await fetch('/AmitMalka-CV.pdf', { method: 'HEAD' });
+      const response = await fetch(`${process.env.PUBLIC_URL}/AmitMalka-CV.pdf`, { method: 'HEAD' });
       if (!response.ok) {
         throw new Error('CV file not found');
       }
 
       const link = document.createElement('a');
-      link.href = '/AmitMalka-CV.pdf';
+      link.href = `${process.env.PUBLIC_URL}/AmitMalka-CV.pdf`;
       link.download = 'Amit-Malka-CV.pdf';
       link.style.display = 'none';
       document.body.appendChild(link);
