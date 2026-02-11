@@ -4,8 +4,8 @@ export const generatePersonSchema = () => {
     '@type': 'Person',
     name: 'Amit Malka',
     jobTitle: 'AI Developer & Data Analyst',
-    url: 'https://amit-malka.github.io/A.M/',
-    image: 'https://amit-malka.github.io/A.M/images/me.jpg',
+    url: 'https://amit-malka.vercel.app/',
+    image: 'https://amit-malka.vercel.app/images/me.jpg',
     description:
       'AI developer with expertise in Large Language Models, RAG systems, and intelligent agent development. Specialized in computational biology and statistical analysis.',
     sameAs: [
@@ -25,7 +25,7 @@ export const generateWebsiteSchema = () => {
     '@context': 'https://schema.org/',
     '@type': 'WebSite',
     name: 'Amit Malka Portfolio',
-    url: 'https://amit-malka.github.io/A.M/',
+    url: 'https://amit-malka.vercel.app/',
     description: 'Professional portfolio showcasing AI development expertise, projects, and experience',
     creator: {
       '@type': 'Person',
@@ -74,8 +74,8 @@ export const generateOrgSchema = () => {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Amit Malka',
-    url: 'https://amit-malka.github.io/A.M',
-    logo: 'https://amit-malka.github.io/A.M/logo192.png',
+    url: 'https://amit-malka.vercel.app',
+    logo: 'https://amit-malka.vercel.app/logo192.png',
     description: 'AI Developer & Data Analyst',
     sameAs: [
       'https://linkedin.com/in/--amitmalka--',
@@ -94,14 +94,14 @@ export const generateOpenGraphTags = () => {
     'og:title': 'Amit Malka - AI Developer & Data Analyst',
     'og:description':
       'Transforming complex data into intelligent systems. Specialized in LLMs, RAG systems, and AI agent development.',
-    'og:image': 'https://amit-malka.github.io/A.M/images/me.jpg',
-    'og:url': 'https://amit-malka.github.io/A.M/',
+    'og:image': 'https://amit-malka.vercel.app/images/me.jpg',
+    'og:url': 'https://amit-malka.vercel.app/',
     'og:type': 'website',
     'twitter:card': 'summary_large_image',
     'twitter:title': 'Amit Malka - AI Developer & Data Analyst',
     'twitter:description':
       'Transforming complex data into intelligent systems. Specialized in LLMs, RAG systems, and AI agent development.',
-    'twitter:image': 'https://amit-malka.github.io/A.M/images/me.jpg'
+    'twitter:image': 'https://amit-malka.vercel.app/images/me.jpg'
   };
 };
 

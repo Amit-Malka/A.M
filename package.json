@@ -2,7 +2,6 @@
   "name": "amit-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://amit-malka.github.io/A.M/",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",
@@ -15,7 +14,6 @@
     "@types/react-router-dom": "^5.3.3",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.542.0",
-    "next": "^16.0.7",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-router-dom": "^6.8.0",
