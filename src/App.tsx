@@ -1,9 +1,8 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import './App.css';
-import { generatePersonSchema, generateWebsiteSchema } from './utils/schemaMarkup';
 
 // Lazy load heavy components
 const Skills = React.lazy(() => import('./components/Skills'));
@@ -13,24 +12,6 @@ const WorkWithMe = React.lazy(() => import('./components/WorkWithMe'));
 const Contact = React.lazy(() => import('./components/Contact'));
 
 function App() {
-  useEffect(() => {
-    // Add person schema to head
-    const personScript = document.createElement('script');
-    personScript.type = 'application/ld+json';
-    personScript.textContent = JSON.stringify(generatePersonSchema());
-    document.head.appendChild(personScript);
-
-    // Add website schema to head
-    const websiteScript = document.createElement('script');
-    websiteScript.type = 'application/ld+json';
-    websiteScript.textContent = JSON.stringify(generateWebsiteSchema());
-    document.head.appendChild(websiteScript);
-
-    return () => {
-      document.head.removeChild(personScript);
-      document.head.removeChild(websiteScript);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-background-dark font-inter text-white overflow-x-hidden">
