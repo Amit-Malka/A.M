@@ -27,7 +27,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="relative min-h-screen bg-gradient-to-br from-primary to-background-light py-20">
+    <section id="about" className="relative scroll-mt-24 min-h-screen bg-gradient-to-br from-primary to-background-light py-20">
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div
@@ -79,23 +79,19 @@ const About: React.FC = () => {
           >
             <p className="text-xl text-accent font-medium leading-relaxed">
               A natural curiosity drives me to dive deep into complex systems.
-              <br />
               My journey started in biotechnology and data analysis, where I learned to find meaning within the 'noise' of high-dimensional biological data.
-              <br />
               This passion for data evolved into a deep focus on Artificial Intelligence.
-              <br />
               Today, as an AI Developer, I build the tools that help us make sense of our world.
-              <br />
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
               My expertise is in advanced AI, with a focus on LLMs and RAG systems.
-              <br />
-              I enjoy the technical challenge of designing sophisticated solutions, such as developing multi-modal systems that understand text, tables, and charts, or engineering hybrid retrieval systems that combine vector search (like ChromaDB) with graph databases (like Neo4j) to provide the most accurate answers.
-              <br />
-              <br />
-              <span className="text-secondary font-semibold">🏆 Recently, I secured 2nd place at the Soroka Hospital hackathon with ResiPlanAI</span>, an AI-powered residency planning platform that revolutionizes medical training schedules. This achievement demonstrates my ability to apply AI solutions to real-world healthcare challenges, creating meaningful impact where technology meets human needs.
-              <br />
-              <br />
+              I enjoy the technical challenge of designing sophisticated solutions — developing multi-modal systems that understand text, tables, and charts, or engineering hybrid retrieval systems that combine vector search (ChromaDB) with graph databases (Neo4j) to provide the most accurate answers.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              <span className="text-secondary font-semibold"><span aria-hidden="true">🏆</span> Recently, I secured 2nd place at the Soroka Hospital hackathon with ResiPlanAI</span> — an AI-powered residency planning platform that revolutionizes medical training schedules.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
               Whether it's a financial report, a genomic sequence, or a complex scheduling problem, my goal is the same: to turn raw, complex information into clear, practical insights.
-              <br />
               I am a fast learner, highly adaptable, and a strong team collaborator.
             </p>
           </motion.div>
@@ -109,14 +105,14 @@ const About: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          {highlights.map((highlight, index) => (
+          {highlights.map((highlight) => (
             <motion.div
-              key={index}
+              key={highlight.title}
               className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-2xl p-6 hover:bg-white/10 hover:border-accent/30 hover:-translate-y-2 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
               <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-4 text-white">
                 {highlight.icon}

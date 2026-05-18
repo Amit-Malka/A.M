@@ -73,7 +73,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="relative min-h-screen bg-background-dark py-20">
+    <section id="skills" className="relative scroll-mt-24 min-h-screen bg-background-dark py-20">
       
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div
@@ -98,7 +98,7 @@ const Skills: React.FC = () => {
         >
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
-              key={categoryIndex}
+              key={category.title}
               className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 hover:bg-white/10 hover:border-accent/30 hover:shadow-lg hover:shadow-secondary/10 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -124,9 +124,9 @@ const Skills: React.FC = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                {category.skills.map((skill, skillIndex) => (
+                {category.skills.map((skill) => (
                   <motion.div
-                    key={skillIndex}
+                    key={skill.name}
                     className="group bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
                     variants={itemVariants}
                     whileHover={{ scale: 1.08, y: -5 }}
@@ -144,7 +144,7 @@ const Skills: React.FC = () => {
                           boxShadow: `0 0 30px ${skill.color}60`
                         }}
                       >
-                        {skill.icon}
+                        <span aria-hidden="true">{skill.icon}</span>
                       </motion.div>
                       <span className="text-sm font-medium text-white group-hover:text-accent transition-colors duration-300 line-clamp-2">
                         {skill.name}

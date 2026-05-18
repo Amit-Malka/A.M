@@ -170,8 +170,10 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
       
-      <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-accent cursor-pointer"
+      <motion.button
+        type="button"
+        aria-label="Scroll to About section"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-accent"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}
@@ -184,7 +186,7 @@ const Hero: React.FC = () => {
           <ArrowDown size={24} />
         </motion.div>
         <span className="text-sm font-medium">Scroll to explore</span>
-      </motion.div>
+      </motion.button>
     </section>
   );
 };

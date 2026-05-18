@@ -3,7 +3,15 @@ import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
 
 const Experience: React.FC = () => {
-  const experiences = [
+  const experiences: Array<{
+    type: 'education' | 'work' | 'project';
+    title: string;
+    company: string;
+    period: string;
+    location: string;
+    description: string;
+    highlights: string[];
+  }> = [
     {
       type: 'education',
       title: 'AI Development Course',
@@ -48,22 +56,19 @@ const Experience: React.FC = () => {
     }
   ];
 
-  const getIcon = (type: string) => {
+  const getIcon = (type: 'education' | 'work' | 'project') => {
     switch (type) {
       case 'education':
         return <GraduationCap size={20} />;
       case 'work':
-        return <Briefcase size={20} />;
       case 'project':
-        return <Briefcase size={20} />;
-      default:
         return <Briefcase size={20} />;
     }
   };
 
 
   return (
-    <section id="experience" className="relative min-h-screen bg-gradient-to-br from-primary via-background-light to-primary py-20">
+    <section id="experience" className="relative scroll-mt-24 min-h-screen bg-gradient-to-br from-primary via-background-light to-primary py-20">
       
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         <motion.div
@@ -91,7 +96,7 @@ const Experience: React.FC = () => {
 
           {experiences.map((experience, index) => (
             <motion.div
-              key={index}
+              key={experience.title}
               className={`relative mb-12 md:mb-16 ${index % 2 === 0 ? 'md:text-left md:pr-8' : 'md:text-left md:pl-8'}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -143,9 +148,9 @@ const Experience: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: index * 0.1 + 0.2 }}
                 >
-                  {experience.highlights.map((highlight, highlightIndex) => (
+                  {experience.highlights.map((highlight) => (
                     <span
-                      key={highlightIndex}
+                      key={highlight}
                       className="px-3 py-1 bg-secondary/20 text-white border border-secondary/30 rounded-full text-sm font-medium"
                     >
                       {highlight}
