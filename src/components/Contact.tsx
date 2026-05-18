@@ -12,6 +12,8 @@ const Contact: React.FC = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitError, setSubmitError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,25 +26,33 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setSubmitError('');
 
     try {
       const response = await fetch('https://formspree.io/f/mvgggrzo', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(formData)
       });
 
+      const data = await response.json().catch(() => ({}));
+
       if (response.ok) {
         setFormData({ name: '', email: '', subject: '', message: '' });
-        alert('Thank you for your message! I\'ll get back to you soon.');
+        setSubmitStatus('success');
       } else {
-        throw new Error('Network response was not ok');
+        const message = data?.errors?.[0]?.message ?? data?.error ?? 'Submission failed. Please try again.';
+        setSubmitError(message);
+        setSubmitStatus('error');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('There was an error sending your message. Please try again.');
+      setSubmitError('Could not reach the server. Please check your connection and try again.');
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -283,6 +293,17 @@ const Contact: React.FC = () => {
                     </>
                   )}
                 </motion.button>
+
+                {submitStatus === 'success' && (
+                  <p className="text-green-400 text-sm text-center font-medium">
+                    Message sent! I'll get back to you soon.
+                  </p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-red-400 text-sm text-center font-medium">
+                    {submitError}
+                  </p>
+                )}
               </form>
             </div>
           </motion.div>
