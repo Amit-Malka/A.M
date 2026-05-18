@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Code, Sparkles, ArrowRight } from 'lucide-react';
-import DynamicBackground from './DynamicBackground';
 
 const WorkWithMe: React.FC = () => {
     const services = [
@@ -42,8 +41,7 @@ const WorkWithMe: React.FC = () => {
 
     return (
         <section id="work-with-me" className="relative min-h-screen bg-gradient-to-br from-background-dark to-primary py-20">
-            <DynamicBackground />
-
+      
             <div className="container mx-auto px-6 relative z-10 max-w-7xl">
                 {/* Header */}
                 <motion.div

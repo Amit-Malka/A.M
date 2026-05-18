@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Brain, Code, Users } from 'lucide-react';
-import DynamicBackground from './DynamicBackground';
 
 const Skills: React.FC = () => {
   const skillCategories = [
@@ -75,7 +74,6 @@ const Skills: React.FC = () => {
 
   return (
     <section id="skills" className="relative min-h-screen bg-background-dark py-20">
-      <DynamicBackground />
       
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div

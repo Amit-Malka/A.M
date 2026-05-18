@@ -1,13 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import DynamicBackground from './DynamicBackground';
 import ProjectCard from './ProjectCard';
 import { projectsData } from '../utils/projectData';
 
 const Projects: React.FC = () => {
   return (
     <section id="projects" className="relative min-h-screen bg-background-dark py-20">
-      <DynamicBackground />
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div
