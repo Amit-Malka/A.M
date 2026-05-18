@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
-import DynamicBackground from './DynamicBackground';
 
 const Experience: React.FC = () => {
   const experiences = [
@@ -65,7 +64,6 @@ const Experience: React.FC = () => {
 
   return (
     <section id="experience" className="relative min-h-screen bg-gradient-to-br from-primary via-background-light to-primary py-20">
-      <DynamicBackground />
       
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         <motion.div

@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ArrowDown, Download, Github, Linkedin } from 'lucide-react';
-import DynamicBackground from './DynamicBackground';
 
 const Hero: React.FC = () => {
   const scrollToAbout = () => {
@@ -45,7 +44,6 @@ const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background-dark pt-20">
-      <DynamicBackground />
       
       <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center max-w-7xl">
         {/* Profile Image */}

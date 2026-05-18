@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Linkedin, Github, Send, Download } from 'lucide-react';
-import DynamicBackground from './DynamicBackground';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -106,7 +105,6 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="relative min-h-screen bg-gradient-to-br from-primary to-background-dark py-20">
-      <DynamicBackground />
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div

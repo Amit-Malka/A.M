@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import DynamicBackground from './components/DynamicBackground';
 import './App.css';
 
 // Lazy load heavy components
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background-dark font-inter text-white overflow-x-hidden">
+      <DynamicBackground />
       <Header />
       <main>
         <Hero />

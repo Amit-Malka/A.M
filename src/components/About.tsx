@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { User, Brain, Code, Users } from 'lucide-react';
-import DynamicBackground from './DynamicBackground';
 
 const About: React.FC = () => {
   const highlights = [
@@ -29,7 +28,6 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="relative min-h-screen bg-gradient-to-br from-primary to-background-light py-20">
-      <DynamicBackground />
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div
