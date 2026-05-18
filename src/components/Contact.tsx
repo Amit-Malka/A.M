@@ -68,22 +68,12 @@ const Contact: React.FC = () => {
   ];
 
   const socialLinks = [
-    {
-      icon: <Linkedin size={24} />,
-      label: 'LinkedIn',
-      href: 'https://linkedin.com/in/--amitmalka--',
-      color: '#0077b5'
-    },
-    {
-      icon: <Github size={24} />,
-      label: 'GitHub',
-      href: 'https://github.com/Amit-Malka',
-      color: '#333333'
-    }
+    { icon: <Linkedin size={24} />, label: 'LinkedIn', href: 'https://linkedin.com/in/--amitmalka--' },
+    { icon: <Github size={24} />, label: 'GitHub', href: 'https://github.com/Amit-Malka' }
   ];
 
   return (
-    <section id="contact" className="relative min-h-screen bg-gradient-to-br from-primary to-background-dark py-20">
+    <section id="contact" className="relative scroll-mt-24 min-h-screen bg-gradient-to-br from-primary to-background-dark py-20">
 
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div
@@ -116,14 +106,14 @@ const Contact: React.FC = () => {
               </p>
 
               <div className="space-y-6 mb-8">
-                {contactInfo.map((item, index) => (
+                {contactInfo.map((item) => (
                   <motion.div
-                    key={index}
+                    key={item.label}
                     className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
                   >
                     <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center text-white">
                       {item.icon}
@@ -145,9 +135,9 @@ const Contact: React.FC = () => {
               <div className="mb-8">
                 <h4 className="text-xl font-semibold text-white mb-4">Find me on</h4>
                 <div className="flex gap-4">
-                  {socialLinks.map((link, index) => (
+                  {socialLinks.map((link) => (
                     <motion.a
-                      key={index}
+                      key={link.label}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -155,7 +145,7 @@ const Contact: React.FC = () => {
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                      transition={{ duration: 0.5 }}
                       aria-label={link.label}
                     >
                       {link.icon}

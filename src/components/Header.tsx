@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion, Variants } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,7 +68,7 @@ const Header: React.FC = () => {
           Amit Malka
         </motion.div>
 
-        <nav className={`hidden md:flex gap-8 ${isMenuOpen ? 'flex' : ''}`}>
+        <nav className="hidden md:flex gap-8">
           <motion.div
             className="flex gap-8"
             variants={containerVariants}
@@ -106,32 +106,36 @@ const Header: React.FC = () => {
         </motion.button>
 
         {/* Mobile Menu */}
-        <motion.nav
-          className={`absolute top-full left-0 right-0 bg-primary/95 backdrop-blur-xl border-b border-accent/20 py-8 md:hidden ${isMenuOpen ? 'block' : 'hidden'
-            }`}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          <motion.div
-            className="flex flex-col gap-4 px-6"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isMenuOpen ? "visible" : "hidden"}
-          >
-            {menuItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-left py-3 px-4 text-gray-300 hover:text-accent hover:bg-white/10 rounded-xl transition-all duration-300 font-medium"
-                variants={itemVariants}
-                whileHover={{ x: 8 }}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.nav
+              className="absolute top-full left-0 right-0 bg-primary/95 backdrop-blur-xl border-b border-accent/20 py-8 md:hidden"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                className="flex flex-col gap-4 px-6"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
               >
-                {item.label}
-              </motion.button>
-            ))}
-          </motion.div>
-        </motion.nav>
+                {menuItems.map((item) => (
+                  <motion.button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-left py-3 px-4 text-gray-300 hover:text-accent hover:bg-white/10 rounded-xl transition-all duration-300 font-medium"
+                    variants={itemVariants}
+                    whileHover={{ x: 8 }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </motion.div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

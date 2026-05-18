@@ -40,7 +40,7 @@ const WorkWithMe: React.FC = () => {
     ];
 
     return (
-        <section id="work-with-me" className="relative min-h-screen bg-gradient-to-br from-background-dark to-primary py-20">
+        <section id="work-with-me" className="relative scroll-mt-24 min-h-screen bg-gradient-to-br from-background-dark to-primary py-20">
       
             <div className="container mx-auto px-6 relative z-10 max-w-7xl">
                 {/* Header */}
@@ -59,7 +59,7 @@ const WorkWithMe: React.FC = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <span className="px-6 py-2 bg-secondary/20 border border-secondary/30 rounded-full text-secondary font-semibold text-sm">
-                            💼 Available for Freelance Work
+                            <span aria-hidden="true">💼</span> Available for Freelance Work
                         </span>
                     </motion.div>
 
@@ -76,7 +76,7 @@ const WorkWithMe: React.FC = () => {
                 <div className="grid md:grid-cols-3 gap-8 mb-16">
                     {services.map((service, index) => (
                         <motion.div
-                            key={index}
+                            key={service.title}
                             className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 hover:bg-white/10 hover:border-accent/30 hover:-translate-y-2 transition-all duration-300 group"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -98,8 +98,8 @@ const WorkWithMe: React.FC = () => {
 
                             {/* Highlights */}
                             <ul className="space-y-3">
-                                {service.highlights.map((highlight, hIndex) => (
-                                    <li key={hIndex} className="flex items-start gap-2 text-sm text-gray-300">
+                                {service.highlights.map((highlight) => (
+                                    <li key={highlight} className="flex items-start gap-2 text-sm text-gray-300">
                                         <ArrowRight size={16} className="text-secondary flex-shrink-0 mt-1" />
                                         <span>{highlight}</span>
                                     </li>
