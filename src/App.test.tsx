@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Hero from './components/Hero';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders hero heading with name', () => {
+  render(<Hero />);
+  const heading = screen.getByRole('heading', { name: /Amit Malka/i });
+  expect(heading).toBeInTheDocument();
 });
