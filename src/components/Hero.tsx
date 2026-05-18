@@ -1,32 +1,13 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ArrowDown, Download, Github, Linkedin } from 'lucide-react';
+import { downloadCV } from '../utils/downloadCV';
 
 const Hero: React.FC = () => {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleDownloadCV = async () => {
-    try {
-      const response = await fetch(`${process.env.PUBLIC_URL}/AmitMalka-CV.pdf`, { method: 'HEAD' });
-      if (!response.ok) {
-        throw new Error('CV file not found');
-      }
-
-      const link = document.createElement('a');
-      link.href = `${process.env.PUBLIC_URL}/AmitMalka-CV.pdf`;
-      link.download = 'Amit-Malka-CV.pdf';
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error('CV download failed:', error);
-      window.open('/AmitMalka-CV.pdf', '_blank');
     }
   };
 
@@ -132,7 +113,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <motion.button 
-              onClick={handleDownloadCV}
+              onClick={downloadCV}
               className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-primary text-white font-semibold rounded-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 hover:shadow-secondary/25 group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
