@@ -151,10 +151,3 @@ export const projectsData: Project[] = [
   }
 ];
 
-export const projectCategories = ['All', 'AI/ML', 'Data Science', 'Full Stack'];
-export const projectTechnologies = [
-  'Python', 'R', 'JavaScript', 'TypeScript', 'React', 'Vue 3',
-  'Node.js', 'PostgreSQL', 'Prisma', 'Tailwind CSS', 'OpenAI API',
-  'LlamaIndex', 'ChromaDB', 'Neo4j', 'FAISS', 'Ollama',
-  'Statistical Analysis', 'RAG Systems', 'Bioinformatics'
-];

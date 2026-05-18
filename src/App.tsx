@@ -1,5 +1,4 @@
 import React, { Suspense, useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -34,30 +33,28 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className="min-h-screen bg-background-dark font-inter text-white overflow-x-hidden">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
-            <Skills />
-          </Suspense>
-          <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
-            <Experience />
-          </Suspense>
-          <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
-            <Projects />
-          </Suspense>
-          <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
-            <WorkWithMe />
-          </Suspense>
-          <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
-            <Contact />
-          </Suspense>
-        </main>
-      </div>
-    </Router>
+    <div className="min-h-screen bg-background-dark font-inter text-white overflow-x-hidden">
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
+          <Skills />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
+          <Experience />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
+          <Projects />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
+          <WorkWithMe />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div></div>}>
+          <Contact />
+        </Suspense>
+      </main>
+    </div>
   );
 }
 
