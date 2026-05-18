@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Zap } from 'lucide-react';
+import { Github, ExternalLink, Zap, Award, Brain, BarChart3, Database, type LucideIcon } from 'lucide-react';
 import { Project } from '../utils/projectData';
-import * as Icons from 'lucide-react';
+
+const iconMap: Record<string, LucideIcon> = { Award, Brain, BarChart3, Database, Zap };
 
 interface ProjectCardProps {
   project: Project;
@@ -10,8 +11,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
-  const iconComponent = Icons[project.icon as keyof typeof Icons] || Icons.Zap;
-  const IconComponent = iconComponent as React.ComponentType<{ size: number }>;
+  const IconComponent = iconMap[project.icon] ?? Zap;
 
   return (
     <motion.div
