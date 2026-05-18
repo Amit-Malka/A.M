@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Linkedin, Github, Send, Download } from 'lucide-react';
+import { downloadCV } from '../utils/downloadCV';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -54,28 +55,6 @@ const Contact: React.FC = () => {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-    }
-  };
-
-  const handleDownloadCV = async () => {
-    try {
-      // Check if file exists first
-      const response = await fetch(`${process.env.PUBLIC_URL}/AmitMalka-CV.pdf`, { method: 'HEAD' });
-      if (!response.ok) {
-        throw new Error('CV file not found');
-      }
-
-      const link = document.createElement('a');
-      link.href = `${process.env.PUBLIC_URL}/AmitMalka-CV.pdf`;
-      link.download = 'Amit-Malka-CV.pdf';
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error('CV download failed:', error);
-      // Fallback: open in new tab
-      window.open('/AmitMalka-CV.pdf', '_blank');
     }
   };
 
@@ -186,7 +165,7 @@ const Contact: React.FC = () => {
               </div>
 
               <motion.button
-                onClick={handleDownloadCV}
+                onClick={downloadCV}
                 className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-secondary text-secondary font-semibold rounded-xl hover:bg-secondary hover:text-white transition-all duration-300 hover:scale-105"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
