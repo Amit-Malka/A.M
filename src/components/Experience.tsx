@@ -15,7 +15,7 @@ const Experience: React.FC = () => {
   }> = [
     {
       type: 'education',
-      title: 'MiluimAI — AI for Developers',
+      title: 'MiluimAI - AI for Developers',
       company: 'TechTroop',
       period: '5/2026 – 7/2026',
       location: 'Israel',
@@ -25,7 +25,7 @@ const Experience: React.FC = () => {
         'Advanced Prompt Engineering',
         'RAG Pipelines & Vector DBs',
         'AI Agents & Automations (LangGraph, n8n)',
-        'MCP (Model Context Protocol)'
+        'MCP'
       ],
       links: [
         { label: 'Course Page', url: 'https://tech-troop.co.il/gen-ai/' }
@@ -33,18 +33,17 @@ const Experience: React.FC = () => {
     },
     {
       type: 'education',
-      title: 'Wix Jumpstart — Reservists Tech Training Program',
+      title: 'Wix Jumpstart - Reservists Tech Training Program',
       company: 'Wix & Milumentor',
       period: '2/2026 – 5/2026',
       location: 'Wix Campus, Tel Aviv',
-      description: 'Selective training program by Wix in collaboration with Milumentor, helping reservists bridge the gap between academic theory and industry reality. Hands-on sprints in small mentor-led squads at the Wix Campus, each session ending with a mock technical interview. Built and shipped real projects, including a production-deployed Weather App.',
+      description: 'Selective training program by Wix in collaboration with Milumentor, helping reservists bridge the gap between academic theory and industry reality. Hands-on sprints in small mentor-led squads at the Wix Campus. Built and shipped real projects.',
       highlights: [
         'React Component Architecture',
         'Async JS & API Integration',
         'State Management (Hooks/Context)',
         'CI/CD & Deployment',
-        'LLM Integration (LangChain, Claude API)',
-        'Mock Technical Interviews'
+        'LLM Integration (LangChain, Claude API)'
       ],
       links: [
         { label: 'Weather App Project', url: 'https://github.com/Amit-Malka/Weather-App' },
@@ -57,12 +56,17 @@ const Experience: React.FC = () => {
       company: 'Ben-Gurion University & The Institute',
       period: '6/2025 – 9/2025',
       location: 'Israel',
-      description: 'Advanced curriculum covering LLMs, RAG systems, MCP, and AI Agents. Hands-on development of intelligent agents with memory, logic, and reasoning capabilities.',
+      description: 'University program from LLM fundamentals through production-ready RAG and agent systems. Covered transformer architecture and prompt engineering, built retrieval pipelines with vector databases and embeddings, designed Python agents with memory and tool use via MCP, and advanced workflows including multimodal input, hybrid retrieval, and evaluation metrics.',
       highlights: [
-        'Large Language Models (LLMs)',
-        'RAG Systems Implementation',
-        'AI Agent Development',
-        'Multi-modal AI Processing'
+        'Transformer Architecture & LLMs',
+        'RAG Pipelines & Vector Databases',
+        'MCP Protocol',
+        'AI Agent Development (Python)',
+        'Multimodal & Hybrid Retrieval',
+        'Agent Evaluation & DSPy'
+      ],
+      links: [
+        { label: 'Financial RAG Project', url: 'https://github.com/Amit-Malka/Financial-Hybrid-RAG-System' }
       ]
     },
     {
