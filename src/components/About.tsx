@@ -85,10 +85,10 @@ const About: React.FC = () => {
             </p>
             <p className="text-lg text-gray-300 leading-relaxed">
               My expertise is in advanced AI, with a focus on LLMs and RAG systems.
-              I enjoy the technical challenge of designing sophisticated solutions — developing multi-modal systems that understand text, tables, and charts, or engineering hybrid retrieval systems that combine vector search (ChromaDB) with graph databases (Neo4j) to provide the most accurate answers.
+              I enjoy the technical challenge of designing sophisticated solutions - developing multi-modal systems that understand text, tables, and charts, or engineering hybrid retrieval systems that combine vector search (ChromaDB) with graph databases (Neo4j) to provide the most accurate answers.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed">
-              <span className="text-secondary font-semibold"><span aria-hidden="true">🏆</span> Recently, I secured 2nd place at the Soroka Hospital hackathon with ResiPlanAI</span> — an AI-powered residency planning platform that revolutionizes medical training schedules.
+              <span className="text-secondary font-semibold"><span aria-hidden="true">🏆</span> Recently, I secured 2nd place at the Soroka Hospital hackathon with ResiPlanAI</span> - an AI-powered residency planning platform that revolutionizes medical training schedules.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed">
               Whether it's a financial report, a genomic sequence, or a complex scheduling problem, my goal is the same: to turn raw, complex information into clear, practical insights.
