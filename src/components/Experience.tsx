@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, GraduationCap, Calendar, MapPin, ExternalLink, Github } from 'lucide-react';
 
 const Experience: React.FC = () => {
   const experiences: Array<{
@@ -11,11 +11,50 @@ const Experience: React.FC = () => {
     location: string;
     description: string;
     highlights: string[];
+    links?: Array<{ label: string; url: string }>;
   }> = [
     {
       type: 'education',
+      title: 'MiluimAI — AI for Developers',
+      company: 'TechTroop',
+      period: '5/2026 – 7/2026',
+      location: 'Israel',
+      description: 'Practical training for developers in the AI era: AI-Native development workflows, working effectively with language models, and building LLM-based systems. Covers RAG systems connected to real data sources, agent and automation development, and modern AI system architecture, culminating in an LLM-based final project.',
+      highlights: [
+        'AI-Native Development (Cursor, Claude Code, Codex)',
+        'Advanced Prompt Engineering',
+        'RAG Pipelines & Vector DBs',
+        'AI Agents & Automations (LangGraph, n8n)',
+        'MCP (Model Context Protocol)'
+      ],
+      links: [
+        { label: 'Course Page', url: 'https://tech-troop.co.il/gen-ai/' }
+      ]
+    },
+    {
+      type: 'education',
+      title: 'Wix Jumpstart — Reservists Tech Training Program',
+      company: 'Wix & Milumentor',
+      period: '2/2026 – 5/2026',
+      location: 'Wix Campus, Tel Aviv',
+      description: 'Selective training program by Wix in collaboration with Milumentor, helping reservists bridge the gap between academic theory and industry reality. Hands-on sprints in small mentor-led squads at the Wix Campus, each session ending with a mock technical interview. Built and shipped real projects, including a production-deployed Weather App.',
+      highlights: [
+        'React Component Architecture',
+        'Async JS & API Integration',
+        'State Management (Hooks/Context)',
+        'CI/CD & Deployment',
+        'LLM Integration (LangChain, Claude API)',
+        'Mock Technical Interviews'
+      ],
+      links: [
+        { label: 'Weather App Project', url: 'https://github.com/Amit-Malka/Weather-App' },
+        { label: 'Program Site', url: 'https://www.wixjumpstart.com/' }
+      ]
+    },
+    {
+      type: 'education',
       title: 'AI Development Course',
-      company: 'Ben-Gurion University & The Institut',
+      company: 'Ben-Gurion University & The Institute',
       period: '6/2025 – 9/2025',
       location: 'Israel',
       description: 'Advanced curriculum covering LLMs, RAG systems, MCP, and AI Agents. Hands-on development of intelligent agents with memory, logic, and reasoning capabilities.',
@@ -157,6 +196,23 @@ const Experience: React.FC = () => {
                     </span>
                   ))}
                 </motion.div>
+
+                {experience.links && (
+                  <div className="flex flex-wrap gap-4 mt-6">
+                    {experience.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-accent hover:text-white text-sm font-medium transition-colors duration-300"
+                      >
+                        {link.url.includes('github.com') ? <Github size={16} /> : <ExternalLink size={16} />}
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             </motion.div>
           ))}
