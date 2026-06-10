@@ -56,9 +56,9 @@ const Experience: React.FC = () => {
       company: 'Ben-Gurion University & The Institute',
       period: '6/2025 – 9/2025',
       location: 'Israel',
-      description: 'University program from LLM fundamentals through production-ready RAG and agent systems. Covered transformer architecture and prompt engineering, built retrieval pipelines with vector databases and embeddings, designed Python agents with memory and tool use via MCP, and advanced workflows including multimodal input, hybrid retrieval, and evaluation metrics.',
+      description: 'From LLM fundamentals through production-ready RAG and agent systems. Covered transformer architecture and prompt engineering, built retrieval pipelines with vector databases and embeddings, designed Python agents with memory and tool use via MCP, and advanced workflows including multimodal input, hybrid retrieval, and evaluation metrics.',
       highlights: [
-        'Transformer Architecture & LLMs',
+        'LLM\'s',
         'RAG Pipelines & Vector Databases',
         'MCP Protocol',
         'AI Agent Development (Python)',
