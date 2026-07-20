@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import ScrollProgress from './components/ScrollProgress';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -7,14 +8,13 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import WorkWithMe from './components/WorkWithMe';
 import Contact from './components/Contact';
-import DynamicBackground from './components/DynamicBackground';
 import './App.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-background-dark font-inter text-white overflow-x-hidden">
-      <DynamicBackground />
+    <div className="min-h-screen bg-bg text-ink font-sans overflow-x-hidden">
       <Header />
+      <ScrollProgress />
       <main>
         <Hero />
         <About />

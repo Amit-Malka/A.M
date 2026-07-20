@@ -1,11 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Code, Sparkles, ArrowRight } from 'lucide-react';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const WorkWithMe: React.FC = () => {
+    const prefersReducedMotion = usePrefersReducedMotion();
+
     const services = [
         {
-            icon: <Brain size={32} />,
+            icon: <Brain size={22} />,
             title: 'AI Development',
             description: 'Custom AI solutions including LLMs, RAG systems, and intelligent agents tailored to your business needs.',
             highlights: [
@@ -16,7 +19,7 @@ const WorkWithMe: React.FC = () => {
             ]
         },
         {
-            icon: <Sparkles size={32} />,
+            icon: <Sparkles size={22} />,
             title: 'GenAI Solutions',
             description: 'Cutting-edge generative AI applications that transform how you interact with data and automate workflows.',
             highlights: [
@@ -27,7 +30,7 @@ const WorkWithMe: React.FC = () => {
             ]
         },
         {
-            icon: <Code size={32} />,
+            icon: <Code size={22} />,
             title: 'Full-Stack Development',
             description: 'End-to-end web applications with modern tech stacks, from concept to deployment.',
             highlights: [
@@ -39,68 +42,52 @@ const WorkWithMe: React.FC = () => {
         }
     ];
 
-    return (
-        <section id="work-with-me" className="relative scroll-mt-24 min-h-screen bg-gradient-to-br from-background-dark to-primary py-20">
-      
-            <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-                {/* Header */}
-                <motion.div
-                    className="text-center mb-16"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <motion.div
-                        className="inline-block mb-4"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <span className="px-6 py-2 bg-secondary/20 border border-secondary/30 rounded-full text-secondary font-semibold text-sm">
-                            <span aria-hidden="true">💼</span> Available for Freelance Work
-                        </span>
-                    </motion.div>
+    const riseIn = {
+        initial: prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { duration: prefersReducedMotion ? 0 : 0.6 },
+    };
 
-                    <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
+    return (
+        <section id="work-with-me" className="relative scroll-mt-24 bg-bg py-20">
+            <div className="mx-auto max-w-4xl px-6">
+                <motion.div className="mb-12" {...riseIn}>
+                    <span className="text-xs uppercase tracking-wider text-accent">
+                        Available for Freelance Work
+                    </span>
+                    <h2 className="font-display text-4xl lg:text-5xl text-ink mt-3 mb-4">
                         Work With Me
                     </h2>
-                    <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg text-muted max-w-2xl leading-relaxed">
                         Transform your ideas into reality with expert AI development and full-stack solutions.
                         Let's build something exceptional together.
                     </p>
                 </motion.div>
 
-                {/* Services Grid */}
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="border-t border-line">
                     {services.map((service, index) => (
                         <motion.div
                             key={service.title}
-                            className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 hover:bg-white/10 hover:border-accent/30 hover:-translate-y-2 transition-all duration-300 group"
-                            initial={{ opacity: 0, y: 30 }}
+                            className="border-b border-line py-10"
+                            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.15 }}
+                            transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
                         >
-                            {/* Icon */}
-                            <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300">
-                                {service.icon}
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-accent" aria-hidden="true">{service.icon}</span>
+                                <h3 className="font-display text-2xl text-ink">{service.title}</h3>
                             </div>
 
-                            {/* Title & Description */}
-                            <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-accent transition-colors duration-300">
-                                {service.title}
-                            </h3>
-                            <p className="text-gray-200 leading-relaxed mb-6">
+                            <p className="text-muted leading-relaxed mb-5 max-w-2xl">
                                 {service.description}
                             </p>
 
-                            {/* Highlights */}
-                            <ul className="space-y-3">
+                            <ul className="grid sm:grid-cols-2 gap-2.5">
                                 {service.highlights.map((highlight) => (
-                                    <li key={highlight} className="flex items-start gap-2 text-sm text-gray-300">
-                                        <ArrowRight size={16} className="text-secondary flex-shrink-0 mt-1" />
+                                    <li key={highlight} className="flex items-start gap-2 text-sm text-ink">
+                                        <ArrowRight size={14} className="text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
                                         <span>{highlight}</span>
                                     </li>
                                 ))}

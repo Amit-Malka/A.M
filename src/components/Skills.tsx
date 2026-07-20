@@ -1,51 +1,54 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Brain, Code, Users } from 'lucide-react';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const Skills: React.FC = () => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   const skillCategories = [
     {
       title: 'Technical Skills',
-      icon: <Code size={24} />,
+      icon: <Code size={20} />,
       skills: [
-        { name: 'Python', icon: '🐍', color: '#3776AB' },
-        { name: 'Large Language Models', icon: '🤖', color: '#FF6B6B' },
-        { name: 'RAG Systems', icon: '🔍', color: '#4ECDC4' },
-        { name: 'Pandas', icon: '🐼', color: '#150458' },
-        { name: 'JavaScript', icon: '⚡', color: '#F7DF1E' },
-        { name: 'TypeScript', icon: '📘', color: '#3178C6' },
-        { name: 'Statistical Analysis', icon: '📊', color: '#FF6B35' },
-        { name: 'AI Agents', icon: '🧠', color: '#45B7D1' },
-        { name: 'R', icon: '📈', color: '#276DC3' },
-        { name: 'SQL', icon: '💾', color: '#336791' },
-        { name: 'Data Visualization', icon: '📈', color: '#F7931E' },
-        { name: 'Computational Biology', icon: '🧬', color: '#00D2FF' }
+        { name: 'Python', icon: '🐍' },
+        { name: 'Large Language Models', icon: '🤖' },
+        { name: 'RAG Systems', icon: '🔍' },
+        { name: 'Pandas', icon: '🐼' },
+        { name: 'JavaScript', icon: '⚡' },
+        { name: 'TypeScript', icon: '📘' },
+        { name: 'Statistical Analysis', icon: '📊' },
+        { name: 'AI Agents', icon: '🧠' },
+        { name: 'R', icon: '📈' },
+        { name: 'SQL', icon: '💾' },
+        { name: 'Data Visualization', icon: '📈' },
+        { name: 'Computational Biology', icon: '🧬' }
       ]
     },
     {
       title: 'AI Development Tools',
-      icon: <Brain size={24} />,
+      icon: <Brain size={20} />,
       skills: [
-        { name: 'ChromaDB', icon: '🎨', color: '#10B981' },
-        { name: 'Neo4j', icon: '🕸️', color: '#008CC1' },
-        { name: 'Cursor', icon: '🎯', color: '#6366F1' },
-        { name: 'Claude Code', icon: '🤖', color: '#D97706' },
-        { name: 'React', icon: '⚛️', color: '#61DAFB' },
-        { name: 'Git', icon: '🔗', color: '#F05032' },
-        { name: 'Prompt Engineering', icon: '💭', color: '#96CEB4' },
-        { name: 'Vector Databases', icon: '🗄️', color: '#FECA57' }
+        { name: 'ChromaDB', icon: '🎨' },
+        { name: 'Neo4j', icon: '🕸️' },
+        { name: 'Cursor', icon: '🎯' },
+        { name: 'Claude Code', icon: '🤖' },
+        { name: 'React', icon: '⚛️' },
+        { name: 'Git', icon: '🔗' },
+        { name: 'Prompt Engineering', icon: '💭' },
+        { name: 'Vector Databases', icon: '🗄️' }
       ]
     },
     {
       title: 'Professional Skills',
-      icon: <Users size={24} />,
+      icon: <Users size={20} />,
       skills: [
-        { name: 'Team Collaboration', icon: '🤝', color: '#10B981' },
-        { name: 'Problem Solving', icon: '🧩', color: '#F59E0B' },
-        { name: 'Fast Learning', icon: '🚀', color: '#EF4444' },
-        { name: 'Adaptability', icon: '🔄', color: '#8B5CF6' },
-        { name: 'Leadership', icon: '👑', color: '#F97316' },
-        { name: 'Communication', icon: '💬', color: '#06B6D4' }
+        { name: 'Team Collaboration', icon: '🤝' },
+        { name: 'Problem Solving', icon: '🧩' },
+        { name: 'Fast Learning', icon: '🚀' },
+        { name: 'Adaptability', icon: '🔄' },
+        { name: 'Leadership', icon: '👑' },
+        { name: 'Communication', icon: '💬' }
       ]
     }
   ];
@@ -54,109 +57,71 @@ const Skills: React.FC = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: prefersReducedMotion ? 0 : 0.05 },
     },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
-      scale: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-      },
+      y: 0,
+      transition: { duration: prefersReducedMotion ? 0 : 0.3 },
     },
   };
 
+  const riseIn = {
+    initial: prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: prefersReducedMotion ? 0 : 0.6 },
+  };
+
   return (
-    <section id="skills" className="relative scroll-mt-24 min-h-screen bg-background-dark py-20">
-      
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">Skills & Technologies</h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+    <section id="skills" className="relative scroll-mt-24 bg-bg py-20">
+      <div className="mx-auto max-w-6xl px-6">
+        <motion.div className="mb-12" {...riseIn}>
+          <h2 className="font-display text-4xl lg:text-5xl text-ink mb-4">Skills & Technologies</h2>
+          <p className="text-lg text-muted max-w-2xl">
             Comprehensive expertise in AI, development tools, and professional competencies
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid lg:grid-cols-3 gap-8 lg:gap-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="grid lg:grid-cols-3 gap-10">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 hover:bg-white/10 hover:border-accent/30 hover:shadow-lg hover:shadow-secondary/10 transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: categoryIndex * 0.1 }}
-              whileHover={{ y: -5 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : categoryIndex * 0.1 }}
             >
-              <div className="flex items-center gap-4 mb-8">
-                <motion.div 
-                  className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-secondary/20"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: 'spring', stiffness: 200 }}
-                >
-                  {category.icon}
-                </motion.div>
-                <h3 className="text-2xl font-bold text-white">{category.title}</h3>
+              <div className="flex items-center gap-3 mb-6 pb-3 border-b border-line">
+                <span className="text-accent">{category.icon}</span>
+                <h3 className="font-display text-xl text-ink">{category.title}</h3>
               </div>
 
               <motion.div
-                className="grid grid-cols-2 sm:grid-cols-3 gap-4"
+                className="flex flex-wrap gap-2"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
               >
                 {category.skills.map((skill) => (
-                  <motion.div
+                  <motion.span
                     key={skill.name}
-                    className="group bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
                     variants={itemVariants}
-                    whileHover={{ scale: 1.08, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface border border-line text-ink rounded-md text-sm"
                   >
-                    <div className="flex flex-col items-center text-center space-y-3">
-                      <motion.div
-                        className="text-3xl w-12 h-12 flex items-center justify-center rounded-xl transition-all duration-300"
-                        style={{ 
-                          backgroundColor: `${skill.color}20`, 
-                          boxShadow: `0 0 20px ${skill.color}30` 
-                        }}
-                        whileHover={{ 
-                          scale: 1.15,
-                          boxShadow: `0 0 30px ${skill.color}60`
-                        }}
-                      >
-                        <span aria-hidden="true">{skill.icon}</span>
-                      </motion.div>
-                      <span className="text-sm font-medium text-white group-hover:text-accent transition-colors duration-300 line-clamp-2">
-                        {skill.name}
-                      </span>
-                    </div>
-                  </motion.div>
+                    <span aria-hidden="true">{skill.icon}</span>
+                    {skill.name}
+                  </motion.span>
                 ))}
               </motion.div>
             </motion.div>
           ))}
-        </motion.div>
-
+        </div>
       </div>
     </section>
   );
