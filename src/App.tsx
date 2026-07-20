@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import ScrollProgress from './components/ScrollProgress';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="min-h-screen bg-bg text-ink font-sans overflow-x-hidden">
       <Header />
+      <ScrollProgress />
       <main>
         <Hero />
         <About />
