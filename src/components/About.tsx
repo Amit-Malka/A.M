@@ -1,127 +1,73 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, Brain, Code, Users } from 'lucide-react';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const About: React.FC = () => {
-  const highlights = [
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  const strengths = [
     {
-      icon: <Brain size={24} />,
       title: 'AI Development',
       description: 'Specialized in LLMs, RAG systems, and intelligent agent development'
     },
     {
-      icon: <Code size={24} />,
       title: 'Data Analysis',
       description: 'Strong foundation in statistical analysis and computational biology'
     },
     {
-      icon: <User size={24} />,
       title: 'Problem Solver',
       description: 'Combines technical proficiency with natural curiosity'
     },
     {
-      icon: <Users size={24} />,
       title: 'Team Collaboration',
       description: 'Experienced in cross-functional teams and collaborative problem-solving'
     }
   ];
 
+  const riseIn = {
+    initial: prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: prefersReducedMotion ? 0 : 0.6 },
+  };
+
   return (
-    <section id="about" className="relative scroll-mt-24 min-h-screen bg-gradient-to-br from-primary to-background-light py-20">
+    <section id="about" className="relative scroll-mt-24 bg-bg py-20">
+      <div className="mx-auto max-w-6xl px-6">
+        <motion.h2 className="font-display text-4xl lg:text-5xl text-ink mb-12" {...riseIn}>
+          About Me
+        </motion.h2>
 
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">About Me</h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-3 gap-12 items-start">
-          {/* Profile Image */}
-          <motion.div
-            className="lg:col-span-1 flex justify-center"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="relative">
-              <div className="w-64 h-80 rounded-2xl bg-gradient-primary p-1 animate-glow">
-                <div className="w-full h-full rounded-2xl bg-gray-800 flex items-center justify-center text-accent text-lg font-semibold border-4 border-accent/20 overflow-hidden">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/images/me2.jpg`}
-                    alt="Amit Malka"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                    width="320"
-                    height="400"
-                  />
-                </div>
-              </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-12 h-12 bg-secondary/30 rounded-full blur-lg"></div>
-              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-accent/40 rounded-full blur-sm"></div>
-            </div>
-          </motion.div>
-
-          {/* About Text */}
-          <motion.div
-            className="lg:col-span-2 space-y-6"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <p className="text-xl text-accent font-medium leading-relaxed">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <motion.div className="space-y-6" {...riseIn}>
+            <p className="text-xl text-ink leading-relaxed">
               A natural curiosity drives me to dive deep into complex systems.
               My journey started in biotechnology and data analysis, where I learned to find meaning within the 'noise' of high-dimensional biological data.
               This passion for data evolved into a deep focus on Artificial Intelligence.
               Today, as an AI Developer, I build the tools that help us make sense of our world.
             </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <p className="text-lg text-muted leading-relaxed">
               My expertise is in advanced AI, with a focus on LLMs and RAG systems.
               I enjoy the technical challenge of designing sophisticated solutions - developing multi-modal systems that understand text, tables, and charts, or engineering hybrid retrieval systems that combine vector search (ChromaDB) with graph databases (Neo4j) to provide the most accurate answers.
             </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              <span className="text-secondary font-semibold"><span aria-hidden="true">🏆</span> Recently, I secured 2nd place at the Soroka Hospital hackathon with ResiPlanAI</span> - an AI-powered residency planning platform that revolutionizes medical training schedules.
+            <p className="text-lg text-muted leading-relaxed">
+              <span className="text-ink font-medium"><span aria-hidden="true">🏆</span> Recently, I secured 2nd place at the Soroka Hospital hackathon with ResiPlanAI</span> - an AI-powered residency planning platform that revolutionizes medical training schedules.
             </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <p className="text-lg text-muted leading-relaxed">
               Whether it's a financial report, a genomic sequence, or a complex scheduling problem, my goal is the same: to turn raw, complex information into clear, practical insights.
               I am a fast learner, highly adaptable, and a strong team collaborator.
             </p>
           </motion.div>
-        </div>
 
-        {/* Highlights Grid */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          {highlights.map((highlight) => (
-            <motion.div
-              key={highlight.title}
-              className="bg-white/5 backdrop-blur-sm border border-accent/20 rounded-2xl p-6 hover:bg-white/10 hover:border-accent/30 hover:-translate-y-2 transition-all duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-4 text-white">
-                {highlight.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">{highlight.title}</h3>
-              <p className="text-gray-200 leading-relaxed">{highlight.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+          <motion.ul className="border-t border-line divide-y divide-line" {...riseIn}>
+            {strengths.map((strength) => (
+              <li key={strength.title} className="py-6">
+                <h3 className="font-display text-xl text-ink mb-2">{strength.title}</h3>
+                <p className="text-muted leading-relaxed">{strength.description}</p>
+              </li>
+            ))}
+          </motion.ul>
+        </div>
       </div>
     </section>
   );

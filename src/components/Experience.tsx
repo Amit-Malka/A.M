@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Calendar, MapPin, ExternalLink, Github } from 'lucide-react';
+import { MapPin, ExternalLink, Github } from 'lucide-react';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const Experience: React.FC = () => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   const experiences: Array<{
     type: 'education' | 'work' | 'project';
     title: string;
@@ -99,128 +102,85 @@ const Experience: React.FC = () => {
     }
   ];
 
-  const getIcon = (type: 'education' | 'work' | 'project') => {
-    switch (type) {
-      case 'education':
-        return <GraduationCap size={20} />;
-      case 'work':
-      case 'project':
-        return <Briefcase size={20} />;
-    }
+  const riseIn = {
+    initial: prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: prefersReducedMotion ? 0 : 0.6 },
   };
 
-
   return (
-    <section id="experience" className="relative scroll-mt-24 min-h-screen bg-gradient-to-br from-primary via-background-light to-primary py-20">
-      
-      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">Experience & Education</h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+    <section id="experience" className="relative scroll-mt-24 bg-bg py-20">
+      <div className="mx-auto max-w-4xl px-6">
+        <motion.div className="mb-12" {...riseIn}>
+          <h2 className="font-display text-4xl lg:text-5xl text-ink mb-4">Experience & Education</h2>
+          <p className="text-lg text-muted max-w-2xl">
             My journey through AI development, research, and professional experience
           </p>
         </motion.div>
 
-        <motion.div
-          className="relative"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Timeline line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-primary h-full rounded-full"></div>
-
+        <div className="relative border-l border-line pl-8 sm:pl-10">
           {experiences.map((experience, index) => (
             <motion.div
               key={experience.title}
-              className={`relative mb-12 md:mb-16 ${index % 2 === 0 ? 'md:text-left md:pr-8' : 'md:text-left md:pl-8'}`}
-              initial={{ opacity: 0, y: 30 }}
+              className="relative pb-14 last:pb-0 lg:grid lg:grid-cols-[180px_1fr] lg:gap-10"
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.08 }}
             >
-              {/* Timeline marker */}
-              <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-primary rounded-full items-center justify-center text-white shadow-md border-4 border-background-dark">
-                {getIcon(experience.type)}
+              <span
+                className="absolute -left-[calc(2rem+5px)] sm:-left-[calc(2.5rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full bg-accent"
+                aria-hidden="true"
+              />
+
+              <div className="mb-2 lg:mb-0 lg:sticky lg:top-28 lg:self-start">
+                <div className="font-display text-lg text-ink">{experience.period}</div>
+                <div className="text-xs uppercase tracking-wider text-muted mt-1">{experience.type}</div>
               </div>
 
-              {/* Content card */}
-              <motion.div
-                className={`bg-white/5 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 hover:bg-white/10 hover:border-accent/30 transition-all duration-300 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 + 0.1, ease: "easeOut" }}
-              >
-                <div className="flex md:hidden items-center gap-4 mb-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white ${experience.type === 'education' ? 'bg-green-500/20 border border-green-500/30' : experience.type === 'project' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'}`}>
-                    {getIcon(experience.type)}
-                  </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${experience.type === 'education' ? 'bg-green-500/20 text-green-300 border border-green-500/30' : experience.type === 'project' ? 'bg-orange-500/20 text-orange-300 border border-orange-500/30' : 'bg-blue-500/20 text-blue-300 border border-blue-500/30'}`}>
-                    {experience.type}
-                  </div>
+              <div>
+                <h3 className="font-display text-2xl text-ink mb-1">{experience.title}</h3>
+                <div className="text-accent font-medium mb-3">{experience.company}</div>
+
+                <div className="flex items-center gap-1.5 text-sm text-muted mb-4">
+                  <MapPin size={14} />
+                  {experience.location}
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-2">{experience.title}</h3>
-                <div className="text-lg font-medium text-accent mb-4">{experience.company}</div>
+                <p className="text-muted leading-relaxed mb-4">{experience.description}</p>
 
-                <div className="flex flex-wrap gap-4 mb-6 text-sm text-gray-200">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={16} />
-                    {experience.period}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={16} />
-                    {experience.location}
-                  </div>
-                </div>
-
-                <p className="text-gray-200 leading-relaxed mb-6">{experience.description}</p>
-
-                <motion.div
-                  className="flex flex-wrap gap-2"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 + 0.2 }}
-                >
+                <ul className="flex flex-wrap gap-2 mb-4">
                   {experience.highlights.map((highlight) => (
-                    <span
+                    <li
                       key={highlight}
-                      className="px-3 py-1 bg-secondary/20 text-white border border-secondary/30 rounded-full text-sm font-medium"
+                      className="px-2.5 py-1 bg-surface border border-line text-ink rounded-md text-xs"
                     >
                       {highlight}
-                    </span>
+                    </li>
                   ))}
-                </motion.div>
+                </ul>
 
                 {experience.links && (
-                  <div className="flex flex-wrap gap-4 mt-6">
+                  <div className="flex flex-wrap gap-4">
                     {experience.links.map((link) => (
                       <a
                         key={link.label}
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-accent hover:text-white text-sm font-medium transition-colors duration-300"
+                        className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline"
                       >
-                        {link.url.includes('github.com') ? <Github size={16} /> : <ExternalLink size={16} />}
+                        {link.url.includes('github.com') ? <Github size={14} /> : <ExternalLink size={14} />}
                         {link.label}
                       </a>
                     ))}
                   </div>
                 )}
-              </motion.div>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
