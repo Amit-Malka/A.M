@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-20  
 **Branch:** `redesign/editorial-craft`  
-**Status:** Approved (pending user review of this written spec)  
+**Status:** Approved / implemented on redesign/editorial-craft  
 **Live site:** https://amit-malka.vercel.app/
 
 ## Goal
