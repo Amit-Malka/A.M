@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { useTheme } from '../theme/ThemeProvider';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +22,7 @@ const Header: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      section.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
       setIsMenuOpen(false);
     }
   };

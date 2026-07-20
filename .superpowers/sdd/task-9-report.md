@@ -104,3 +104,29 @@ Not executed in this automated pass (requires a running browser session); left f
 - Modified: `tailwind.config.js` (removed unused legacy animation/keyframes/backgroundImage)
 - Modified: `public/favicon.svg` (replaced AI neural-network mark with token-based monogram)
 - Modified: `docs/superpowers/specs/2026-07-20-editorial-craft-redesign-design.md` (status line)
+
+## Final whole-branch review fixups
+
+Addressed the "Must fix" and "Should fix" findings from the final branch review:
+
+1. **Hero reduced-motion gating** (`src/components/Hero.tsx`): added a `fadeIn(delay, y)` helper that returns `initial={false}` (skips the entrance transform entirely) and `duration: 0` when `usePrefersReducedMotion()` is true, applied to the heading/subheading/paragraph/CTA/social/photo-wrapper/scroll-indicator `motion` elements — same pattern as `About`/`Skills`. The social-link `Variants` (`hidden`/`visible`) were also updated to drop the `y` offset and delay/duration when reduced. Photo parallax (`photoY`) was already gated and left untouched.
+2. **JS smooth-scroll**: `Hero.scrollToAbout` and `Header.scrollToSection` now call `scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' })`; `Header` now imports and calls `usePrefersReducedMotion()`.
+3. **Contact error color**: added a `--danger` CSS variable (`#B91C1C` light / `#F87171` dark) in `src/index.css`, wired it up as `danger` in `tailwind.config.js`, and swapped `Contact.tsx`'s hardcoded `text-red-500` for `text-danger`.
+4. **Carousel focus rings**: added `outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg` to the Previous/Next buttons in `ProjectsCarousel.tsx`, matching the region's existing focus-ring family.
+
+### Tests
+
+```
+npm test -- --watchAll=false
+```
+
+Result: `Test Suites: 3 passed, 3 total`, `Tests: 4 passed, 4 total` (Jest scoped to changed-file-related suites; no failures).
+
+### Files changed (this pass)
+
+- Modified: `src/components/Hero.tsx`
+- Modified: `src/components/Header.tsx`
+- Modified: `src/components/Contact.tsx`
+- Modified: `src/components/ProjectsCarousel.tsx`
+- Modified: `src/index.css`
+- Modified: `tailwind.config.js`

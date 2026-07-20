@@ -79,7 +79,7 @@ const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({ projects }) => {
           type="button"
           aria-label="Previous project"
           onClick={prev}
-          className="p-2 rounded-full border border-line text-ink hover:border-accent hover:text-accent transition-colors"
+          className="p-2 rounded-full border border-line text-ink hover:border-accent hover:text-accent transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           <ChevronLeft size={20} />
         </button>
@@ -87,7 +87,7 @@ const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({ projects }) => {
           type="button"
           aria-label="Next project"
           onClick={next}
-          className="p-2 rounded-full border border-line text-ink hover:border-accent hover:text-accent transition-colors"
+          className="p-2 rounded-full border border-line text-ink hover:border-accent hover:text-accent transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           <ChevronRight size={20} />
         </button>

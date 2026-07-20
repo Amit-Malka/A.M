@@ -12,6 +12,7 @@ module.exports = {
         ink: 'var(--text)',
         muted: 'var(--text-muted)',
         accent: 'var(--accent)',
+        danger: 'var(--danger)',
       },
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'serif'],

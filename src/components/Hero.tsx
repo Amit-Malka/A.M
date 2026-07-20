@@ -18,18 +18,24 @@ const Hero: React.FC = () => {
   const scrollToAbout = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      aboutSection.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     }
   };
 
+  const fadeIn = (delay: number, y = 20) => ({
+    initial: prefersReducedMotion ? false : { opacity: 0, y },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: prefersReducedMotion ? 0 : 0.8, delay: prefersReducedMotion ? 0 : delay },
+  });
+
   const socialVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 20 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: 1.2 + i * 0.1,
-        duration: 0.5,
+        delay: prefersReducedMotion ? 0 : 1.2 + i * 0.1,
+        duration: prefersReducedMotion ? 0 : 0.5,
       },
     }),
   };
@@ -39,42 +45,32 @@ const Hero: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
           className="order-1 space-y-6 text-center lg:text-left"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          {...fadeIn(0, 30)}
         >
           <motion.h1
             className="font-display text-5xl lg:text-7xl leading-tight text-ink"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            {...fadeIn(0.2)}
           >
             Amit Malka
           </motion.h1>
 
           <motion.h2
             className="text-2xl lg:text-3xl font-light text-accent"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            {...fadeIn(0.4)}
           >
             AI Developer & Data Analyst
           </motion.h2>
 
           <motion.p
             className="text-lg lg:text-xl text-muted max-w-2xl leading-relaxed mx-auto lg:mx-0"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            {...fadeIn(0.6)}
           >
             Transforming complex data into intelligent systems. Specialized in LLM's, RAG systems, and AI agent development with a strong foundation in statistical analysis.
           </motion.p>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            {...fadeIn(0.8)}
           >
             <button
               type="button"
@@ -96,9 +92,7 @@ const Hero: React.FC = () => {
 
           <motion.div
             className="flex gap-4 justify-center lg:justify-start"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            {...fadeIn(1)}
           >
             <motion.a
               href="https://linkedin.com/in/--amitmalka--"
@@ -132,9 +126,9 @@ const Hero: React.FC = () => {
         <motion.div
           ref={photoRef}
           className="order-2 flex justify-center lg:justify-end"
-          initial={{ opacity: 0 }}
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.8, delay: prefersReducedMotion ? 0 : 0.2 }}
         >
           <motion.div
             className="relative w-full max-w-sm aspect-[4/5] border border-line overflow-hidden"
@@ -155,9 +149,9 @@ const Hero: React.FC = () => {
         type="button"
         aria-label="Scroll to About section"
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-muted"
-        initial={{ opacity: 0 }}
+        initial={prefersReducedMotion ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.8, delay: prefersReducedMotion ? 0 : 1.2 }}
         onClick={scrollToAbout}
       >
         <ArrowDown size={20} />

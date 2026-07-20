@@ -192,7 +192,7 @@ const Contact: React.FC = () => {
                 </p>
               )}
               {submitStatus === 'error' && (
-                <p className="text-sm text-center font-medium text-red-500">
+                <p className="text-sm text-center font-medium text-danger">
                   {submitError}
                 </p>
               )}
