@@ -55,3 +55,23 @@ Full suite afterward: `Test Suites: 4 passed, 4 total` / `Tests: 6 passed, 6 tot
 - Non-active slides remain in the DOM (for the peek effect) but are excluded from the accessibility tree via `aria-hidden` + `inert`; this is intentional and is what testing-library's `getByRole` relies on to resolve a single match, but is worth a manual screen-reader/tab-order smoke check later.
 
 **Report path:** `.superpowers/sdd/task-7-report.md`
+
+## Review fixes (Critical/Important findings)
+
+1. **Visible focus on carousel region (Critical):** `outline-none` on the `role="region"` container left keyboard focus invisible. Added `focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg` (plus `rounded-md` so the ring renders cleanly) using existing editorial tokens.
+2. **Focus loss on slide change via `inert` (Important):** When `index` changes, the previously active slide becomes `inert`, and any focused link inside it blurs to `<body>`. `goTo` now calls `regionRef.current?.focus({ preventScroll: true })` after every index update (covers next/prev/dot-click/keyboard, since all paths funnel through `goTo`), so keyboard users land back on the focus-visible region instead of losing their place.
+3. **Wrap-around rewind (optional polish, done):** `next()`/`prev()` now detect the last→first / first→last transition and set the track's `transition` to `'none'` for one frame (`transitionEnabled` state, reset via `requestAnimationFrame`) so wrapping snaps directly instead of animating backwards through every intermediate slide. Reduced-motion path (`prefersReducedMotion`) is unaffected — it already forces `transition: 'none'` unconditionally.
+
+### Test results after fix
+
+```
+npm test -- --watchAll=false src/components/ProjectsCarousel.test.tsx
+
+PASS src/components/ProjectsCarousel.test.tsx
+  √ shows first project title and advances on next (309 ms)
+  √ wraps from last to first (265 ms)
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+```
+
+No new tests were added — existing navigation tests (next/wrap) continue to exercise the `goTo` path that now also handles focus and wrap-transition logic, and the focus-visible ring is a pure CSS class with no new behavior to unit-test in jsdom.

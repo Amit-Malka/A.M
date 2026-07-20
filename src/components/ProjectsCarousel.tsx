@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import ProjectSlide from './ProjectSlide';
@@ -15,10 +15,28 @@ const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({ projects }) => {
   const prefersReducedMotion = usePrefersReducedMotion();
   const count = projects.length;
   const pointerStartX = useRef<number | null>(null);
+  const regionRef = useRef<HTMLDivElement>(null);
+  // Suppresses the transform transition for one frame on wrap-around, so the
+  // track snaps straight to the wrapped slide instead of animating backwards
+  // through every slide in between. Re-enabled on the next frame.
+  const [transitionEnabled, setTransitionEnabled] = useState(true);
 
-  const goTo = (targetIndex: number) => setIndex(((targetIndex % count) + count) % count);
-  const next = () => goTo(index + 1);
-  const prev = () => goTo(index - 1);
+  useEffect(() => {
+    if (transitionEnabled) return undefined;
+    const raf = requestAnimationFrame(() => setTransitionEnabled(true));
+    return () => cancelAnimationFrame(raf);
+  }, [transitionEnabled]);
+
+  // Any programmatic navigation (buttons, dots, or keyboard) can leave a slide's
+  // link focused right before it becomes inert, which blurs focus to <body>.
+  // Refocusing the region after the index changes keeps keyboard users in place.
+  const goTo = (targetIndex: number, isWrap = false) => {
+    if (isWrap) setTransitionEnabled(false);
+    setIndex(((targetIndex % count) + count) % count);
+    regionRef.current?.focus({ preventScroll: true });
+  };
+  const next = () => goTo(index + 1, index === count - 1);
+  const prev = () => goTo(index - 1, index === 0);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'ArrowRight') {
@@ -48,12 +66,13 @@ const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({ projects }) => {
 
   return (
     <div
+      ref={regionRef}
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured projects"
       tabIndex={0}
       onKeyDown={handleKeyDown}
-      className="outline-none"
+      className="outline-none rounded-md focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
     >
       <div className="flex items-center justify-end gap-3 mb-6">
         <button
@@ -83,7 +102,7 @@ const ProjectsCarousel: React.FC<ProjectsCarouselProps> = ({ projects }) => {
           className="flex"
           style={{
             transform: `translateX(-${index * 100}%)`,
-            transition: prefersReducedMotion ? 'none' : 'transform 0.5s ease',
+            transition: prefersReducedMotion || !transitionEnabled ? 'none' : 'transform 0.5s ease',
           }}
         >
           {projects.map((project, i) => {
