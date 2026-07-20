@@ -6,14 +6,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#111933',
-        secondary: '#3953ab',
-        accent: '#b5c0e6',
-        'background-dark': '#0a0a0a',
-        'background-light': '#1a1a2e',
+        bg: 'var(--bg)',
+        surface: 'var(--surface)',
+        line: 'var(--border)',
+        ink: 'var(--text)',
+        muted: 'var(--text-muted)',
+        accent: 'var(--accent)',
       },
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
